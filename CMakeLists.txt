@@ -15,14 +15,13 @@ include(CMakePackageConfigHelpers)
 # Options
 # ========================
 option(DRIVE_ADAPTER_BUILD_TESTS "Build drive-adapter tests" OFF)
+option(DRIVE_ADAPTER_BUILD_DOCS "Build drive-adapter documentation" OFF)
 option(DRIVE_WARNINGS_AS_ERRORS "Treat warnings as errors" OFF)
 
 # ========================
 # Dependencies
 # ========================
-if(EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/.vix/vix_deps.cmake")
-    include("${CMAKE_CURRENT_SOURCE_DIR}/.vix/vix_deps.cmake")
-endif()
+find_package(softadastra REQUIRED)
 
 # ========================
 # Sources
@@ -141,6 +140,7 @@ message(STATUS "------------------------------------------------------")
 message(STATUS "drive::adapter configured (${PROJECT_VERSION})")
 message(STATUS "Include dir:      ${CMAKE_CURRENT_SOURCE_DIR}/include")
 message(STATUS "Build tests:      ${DRIVE_ADAPTER_BUILD_TESTS}")
+message(STATUS "Build docs:       ${DRIVE_ADAPTER_BUILD_DOCS}")
 message(STATUS "Warnings=error:   ${DRIVE_WARNINGS_AS_ERRORS}")
 message(STATUS "Build type:       ${CMAKE_BUILD_TYPE}")
 message(STATUS "Install prefix:   ${CMAKE_INSTALL_PREFIX}")
